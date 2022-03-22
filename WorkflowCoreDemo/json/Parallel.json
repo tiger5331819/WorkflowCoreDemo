@@ -1,0 +1,58 @@
+{
+  "Id": "WorkflowCoreTest-Parallel",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass3,WebApplication1",
+  "Steps": [
+    {
+      "Id": "MyParallelStep",
+      "StepType": "ConsoleApp1.ParallelTest, WebApplication1",
+      "NextStepId": "ShowResult",
+      "Do": [
+        [
+          {
+            "Id": "ParallelEvent",
+            "StepType": "ConsoleApp1.Event,WebApplication1",
+            "NextStepId": "Result1",
+            "Inputs": {
+              "EventName": "\"ParallelEventWaitFor\"",
+              "EventKey": "\"1\"",
+              "EffectiveDate": "DateTime.Now.Date"
+            }
+          },
+          {
+            "Id": "Result1",
+            "StepType": "ConsoleApp1.ShowNumber,WebApplication1",
+            "Inputs": {
+              "Input1": "data.Value1",
+              "Input2": "data.Value2"
+            },
+            "Outputs": {
+              "Value5": "step.Output"
+            }
+          }
+        ],
+        [
+          {
+            "Id": "Result2",
+            "StepType": "ConsoleApp1.ShowNumber,WebApplication1",
+            "Inputs": {
+              "Input1": "data.Value4",
+              "Input2": "data.Value2"
+            },
+            "Outputs": {
+              "Value3": "step.Output"
+            }
+          }
+        ]
+      ]
+    }
+    ,
+    {
+      "Id": "ShowResult",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value3+data.Value5"
+      }
+    }
+  ]
+}

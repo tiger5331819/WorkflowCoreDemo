@@ -1,0 +1,40 @@
+{
+  "Id": "WorkflowCoreTest-IF",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass2,WebApplication1",
+  "Steps": [
+    {
+      "Id": "If",
+      "StepType": "ConsoleApp1.IFTest,WebApplication1",
+      "Inputs": { "Condition": "data.Value==\"1\"" },
+      "NextStepId": "If2",
+      "Do": [
+        [
+          {
+            "Id": "do",
+            "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+            "Inputs": {
+              "Message": "\"End\"+data.Value"
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "Id": "If2",
+      "StepType": "ConsoleApp1.IFTest,WebApplication1",
+      "Inputs": { "Condition": "data.Value==\"2\"" },
+      "Do": [
+        [
+          {
+            "Id": "do2",
+            "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+            "Inputs": {
+              "Message": "\"End\"+data.Value"
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

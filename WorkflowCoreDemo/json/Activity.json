@@ -1,0 +1,32 @@
+{
+  "Id": "WorkflowCoreTest-Activity",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass,WebApplication1",
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "NextStepId": "ActivityTest"
+    },
+    {
+      "Id": "ActivityTest",
+      "StepType": "ConsoleApp1.ActivityTest,WebApplication1",
+      "NextStepId": "ShowResult",
+      "Inputs": {
+        "ActivityName": "\"ActivityTest\"",
+        "Parameters": "data.Value1",
+        "EffectiveDate": "DateTime.Now.Date"
+      },
+      "Outputs": {
+        "Value3": "step.Result"
+      }
+    },
+    {
+      "Id": "ShowResult",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value3"
+      }
+    }
+  ]
+}

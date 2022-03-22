@@ -1,0 +1,29 @@
+{
+  "Id": "WorkflowCoreTest-Branch",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass2,WebApplication1",
+  "Steps": [
+    {
+      "Id": "Decide",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "SelectNextStep": {
+        "Branch1": "data.Value == \"1\"",
+        "Branch2": "data.Value == \"2\""
+      }
+    },
+    {
+      "Id": "Branch1",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value"
+      }
+    },
+    {
+      "Id": "Branch2",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value"
+      }
+    }
+  ]
+}

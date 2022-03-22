@@ -1,0 +1,32 @@
+{
+  "Id": "WorkflowCoreTest-Event",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass,WebApplication1",
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "NextStepId": "Event"
+    },
+    {
+      "Id": "Event",
+      "StepType": "ConsoleApp1.Event,WebApplication1",
+      "NextStepId": "ShowResult",
+      "Inputs": {
+        "EventName": "\u0022EventWaitFor\u0022",
+        "EventKey": "\u00221\u0022",
+        "EffectiveDate": "DateTime.Now.Date"
+      },
+      "Outputs": {
+        "Value3": "step.EventData"
+      }
+    },
+    {
+      "Id": "ShowResult",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value3"
+      }
+    }
+  ]
+}

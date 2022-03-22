@@ -1,0 +1,32 @@
+{
+  "Id": "WorkflowCoreTest",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass,WebApplication1",
+  "Description": "123123123",
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "NextStepId": "Result"
+    },
+    {
+      "Id": "Result",
+      "StepType": "ConsoleApp1.ShowNumber,WebApplication1",
+      "Inputs": {
+        "Input1": "data.Value1",
+        "Input2": "data.Value2"
+      },
+      "Outputs": {
+        "Value3": "step.Output"
+      },
+      "NextStepId": "ShowResult"
+    },
+    {
+      "Id": "ShowResult",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value3"
+      }
+    }
+  ]
+}

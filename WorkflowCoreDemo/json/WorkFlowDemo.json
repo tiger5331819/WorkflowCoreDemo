@@ -1,0 +1,60 @@
+{
+  "Id": "WorkflowCoreDemo",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass2,WebApplication1",
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "NextStepId": "ActivityTest"
+    },
+    {
+      "Id": "ActivityTest",
+      "StepType": "ConsoleApp1.ActivityTest,WebApplication1",
+      "NextStepId": "If",
+      "Inputs": {
+        "ActivityName": "\"ActivityTest\"",
+        "Parameters": "data.Value",
+        "EffectiveDate": "DateTime.Now.Date"
+      },
+      "Outputs": {
+        "Value": "step.Result"
+      }
+    },
+    {
+      "Id": "If",
+      "StepType": "ConsoleApp1.IFTest,WebApplication1",
+      "Inputs": { "Condition": "data.Value==\"1\"" },
+      "NextStepId": "If2",
+      "Do": [
+        [
+          {
+            "Id": "do",
+            "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+            "NextStepId": "Hello",
+            "Inputs": {
+              "Message": "\"This is IF1\""
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "Id": "If2",
+      "StepType": "ConsoleApp1.IFTest,WebApplication1",
+      "Inputs": { "Condition": "data.Value==\"2\"" },
+      "Do": [
+        [
+          {
+            "Id": "do2",
+            "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+            "NextStepId": "ActivityTest",
+            "Inputs": {
+              "Message": "\"This is IF2\""
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

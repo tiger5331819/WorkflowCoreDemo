@@ -1,0 +1,26 @@
+{
+  "Id": "WorkflowCoreTest-Error",
+  "Version": 1,
+  "DataType": "WebApplication1.Controllers.MyDataClass,WebApplication1",
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ConsoleApp1.HelloWorld,WebApplication1",
+      "NextStepId": "ErrorTest"
+    },
+    {
+      "Id": "ErrorTest",
+      "StepType": "ConsoleApp1.ErrorTest,WebApplication1",
+      "ErrorBehavior": "Compensate",
+      "CompensateInterval": "00:00:01",
+      "NextStepId": "ShowResult"
+    },
+    {
+      "Id": "ShowResult",
+      "StepType": "ConsoleApp1.ShowNumber2,WebApplication1",
+      "Inputs": {
+        "Message": "\"End\"+data.Value3"
+      }
+    }
+  ]
+}
